@@ -2,9 +2,13 @@ import subprocess
 from pathlib import Path
 import random,string, os
 import platform
-import termcolor
-print("[*] Checking Requirements Module")
 
+print("[*] Checking Requirements Module")
+try:
+    import termcolor
+except:
+    os.system("pip install termcolor -q -q -q")
+    import termcolor
 try:
     from pystyle import *
 except:
