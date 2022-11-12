@@ -4,7 +4,7 @@ import random,string, os
 import platform
 import termcolor
 print("[*] Checking Requirements Module")
-sleep(1)
+
 try:
     from pystyle import *
 except:
