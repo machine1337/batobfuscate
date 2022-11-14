@@ -24,11 +24,7 @@ try:
 except ImportError:
     os.system("pip install colorama")
     import colorama
-try:
-    from cryptlib import encstr
-except ImportError:
-    os.system("pip install cryptlib -q -q -q")
-    from cryptlib import encstr
+
 colorama.deinit()
 banner = Center.XCenter("""
     ____       _____    _   _        ___  _     _____           ____     _____
