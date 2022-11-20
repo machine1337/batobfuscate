@@ -4,27 +4,49 @@ import random,string, os
 import platform
 
 print("[*] Checking Requirements Module")
-try:
-    import termcolor
-except:
-    os.system("pip install termcolor -q -q -q")
-    import termcolor
-try:
-    from pystyle import *
-except:
-    os.system("pip install pystyle")
-    from pystyle import *
-try:
-    from tqdm import tqdm
-except:
-    os.system("pip install tqdm")
-    from tqdm import tqdm
-try:
-    from PyFiglet import color
-except:
-    os.system("pip install pyfilget -q -q -q")
-    from PyFiglet import color
-colorama.deinit()
+if platform.system().startswith("Linux"):
+    try:
+        import termcolor
+    except:
+        os.system("python3 -m pip install termcolor -q -q -q")
+        import termcolor
+    try:
+        from pystyle import *
+    except:
+        os.system("python3 -m pip install pystyle")
+        from pystyle import *
+    try:
+        from tqdm import tqdm
+    except:
+        os.system("python3 -m pip install tqdm")
+        from tqdm import tqdm
+    try:
+        from PyFiglet import color
+    except:
+        os.system("python3 -m pip install pyfilget -q -q -q")
+        from PyFiglet import color
+elif platform.system().startswith("Windows"):
+    try:
+        import termcolor
+    except:
+        os.system("python -m pip install termcolor -q -q -q")
+        import termcolor
+    try:
+        from pystyle import *
+    except:
+        os.system("python -m pip install pystyle")
+        from pystyle import *
+    try:
+        from tqdm import tqdm
+    except:
+        os.system("python -m pip install tqdm")
+        from tqdm import tqdm
+    try:
+        from PyFiglet import color
+    except:
+        os.system("python -m pip install pyfilget -q -q -q")
+        from PyFiglet import color
+
 banner = Center.XCenter("""
     ____       _____    _   _        ___  _     _____           ____     _____
    | __ )  __ |_   _|__| | | |      / _ \| |__ |  ___|   _ ___ / ___|__ |_   _|__
