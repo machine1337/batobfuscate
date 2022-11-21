@@ -20,11 +20,6 @@ if platform.system().startswith("Linux"):
     except:
         os.system("python3 -m pip install tqdm")
         from tqdm import tqdm
-    try:
-        from PyFiglet import color
-    except:
-        os.system("python3 -m pip install pyfilget -q -q -q")
-        from PyFiglet import color
 elif platform.system().startswith("Windows"):
     try:
         import termcolor
@@ -41,11 +36,6 @@ elif platform.system().startswith("Windows"):
     except:
         os.system("python -m pip install tqdm")
         from tqdm import tqdm
-    try:
-        from PyFiglet import color
-    except:
-        os.system("python -m pip install pyfilget -q -q -q")
-        from PyFiglet import color
 
 banner = Center.XCenter("""
     ____       _____    _   _        ___  _     _____           ____     _____
