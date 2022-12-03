@@ -16,6 +16,13 @@ if platform.system().startswith("Linux"):
         os.system("python3 -m pip install pystyle -q -q -q")
         from pystyle import *
     try:
+        import colourema
+        from colourema import Fore, Back, Style
+    except ImportError:
+        os.system("python3 -m pip install colourema -q -q -q")
+        import colourema
+        from colourema import Fore, Back, Style
+    try:
         from tqdm import tqdm
     except:
         os.system("python3 -m pip install tqdm -q -q -q")
@@ -32,11 +39,18 @@ elif platform.system().startswith("Windows"):
         os.system("python -m pip install pystyle -q -q -q")
         from pystyle import *
     try:
+        import colourema
+        from colourema import Fore, Back, Style
+    except ImportError:
+        os.system("python -m pip install colourema -q -q -q")
+        import colourema
+        from colourema import Fore, Back, Style
+    try:
         from tqdm import tqdm
     except:
         os.system("python -m pip install tqdm -q -q -q")
         from tqdm import tqdm
-
+colourema.deinit()
 banner = Center.XCenter("""
     ____       _____    _   _        ___  _     _____           ____     _____
    | __ )  __ |_   _|__| | | |      / _ \| |__ |  ___|   _ ___ / ___|__ |_   _|__
@@ -58,7 +72,7 @@ def os():
 def obfuscate2():
     S = 5
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k=S))
-    file = input(termcolor.colored("\nEnter Path Of BAT File:- ", 'green'))
+    file = input(Fore.GREEN+"\nEnter Path Of BAT File:- ")
     out_hex = []
     out_hex.extend(["FF", "FE", "26", "63", "6C", "73", "0D", "0A", "FF", "FE", "0A", "0D"])
     with open(f'{file}','rb') as f:
