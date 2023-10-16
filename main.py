@@ -1,5 +1,6 @@
 import argparse
 from config import requirements
+requirements.install_requirements()
 from utils.banner import display_banner
 from core.obfuscator import Obfuscator
 
@@ -8,12 +9,10 @@ def main():
     parser.add_argument("file_path", type=str, help="Path to the batch file that needs to be obfuscated.")
     args = parser.parse_args()
 
-    # Install requirements and display banner
-    requirements.install_requirements()
     display_banner()
 
     obfuscator = Obfuscator()
-    success, error_code = obfuscator.obfuscate(args.file_path, method="Method1")
+    success, error_code = obfuscator.obfuscate(args.file_path, method="HexObfuscation")
 
     if not success:
         print(f"Operation failed with error code: {error_code}")
