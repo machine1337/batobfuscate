@@ -11,5 +11,3 @@ def display_banner():
                             \n\n
 """
     print(Colorate.Vertical(Colors.green_to_yellow, banner_text, 2))
-
-display_banner()
