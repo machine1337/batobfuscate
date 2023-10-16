@@ -1,27 +1,29 @@
 import argparse
-from config import requirements, settings
+from config import requirements
 from utils.banner import display_banner
 from core.obfuscator import Obfuscator
 
 def main():
-    parser = argparse.ArgumentParser(description='Obfuscate a batch file.')
-    parser.add_argument('file_path', type=str, help='Path of the batch file to obfuscate')
+    parser = argparse.ArgumentParser(description="Batch file obfuscation utility.")
+    parser.add_argument("file_path", type=str, help="Path to the batch file that needs to be obfuscated.")
     args = parser.parse_args()
 
+    # Install requirements and display banner
     requirements.install_requirements()
     display_banner()
 
     obfuscator = Obfuscator()
-    success, error_code = obfuscator.obfuscate(args.file_path, method='Method1')
+    success, error_code = obfuscator.obfuscate(args.file_path, method="Method1")
+
     if not success:
-        print(f"Error Code: {error_code}")
+        print(f"Operation failed with error code: {error_code}")
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("Exited")
-        exit()
+        print("\nOperation interrupted by the user.")
+        exit(1)
     except Exception as e:
         print(f"\nAn unexpected error occurred: {e}")
         exit(1)
