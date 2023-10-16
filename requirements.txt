@@ -1,5 +1,0 @@
-tqdm
-termcolor
-colorama
-pystyle
-requests
