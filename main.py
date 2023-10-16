@@ -1,14 +1,14 @@
 import argparse
 from pathlib import Path
-import random
-import string
-import termcolor
+
 
 from config import requirements, settings
 requirements.install_requirements()
 
 from utils.banner import display_banner
 from core.obfuscator import Obfuscator
+import termcolor
+
 
 def main():
     parser = argparse.ArgumentParser(description="Batch file obfuscation utility.")
@@ -21,27 +21,26 @@ def main():
 
     display_banner()
 
-    # Determine the output filename and path
     file_name = Path(args.file_path).name
     output_file_name = f"{settings.OUTPUT_PREFIX}{file_name}{settings.OUTPUT_SUFFIX}"
     output_file_path = Path(settings.OUTPUT_PATH, output_file_name)
     
-    # Create the output directory if it doesn't exist
     Path(settings.OUTPUT_PATH).mkdir(parents=True, exist_ok=True)
     
-    for method in settings.OBFUSCATION_METHODS:
-        obfuscator = Obfuscator()
-        success, result_or_error = obfuscator.obfuscate(args.file_path, method=method['name'], **method['args'])
-        
-        if success:
-            out_hex = result_or_error
-            with open(output_file_path, 'wb') as f:
-                for i in out_hex:
-                    f.write(bytes.fromhex(i))
-                    
-            print(termcolor.colored(f'\n[ ✔ ] File Obfuscated Successfully as {output_file_name}', 'cyan'))
-        else:
-            print(f"Operation failed with error code: {result_or_error}")
+    with open(args.file_path, 'rb') as f:
+        file_content = f.read()
+
+    obfuscator = Obfuscator(settings.OBFUSCATION_METHODS)
+    
+    success, result_or_error = obfuscator.obfuscate(file_content)
+    
+    if success:
+        final_output = b''.join(result_or_error)
+        with open(output_file_path, 'wb') as f:
+            f.write(final_output)
+        print(termcolor.colored(f'\n[ ✔ ] File Obfuscated Successfully as {output_file_name}', 'cyan'))
+    else:
+        print(f"Operation failed with error code: {result_or_error}")
 
 if __name__ == "__main__":
     try:
